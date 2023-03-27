@@ -132,48 +132,10 @@ def generate_simular_words(num, word):
         open_words.append(ans)
     return ans
 
-'''
-for k in range(1001):
-    user_word = find_word(trs, k)
-    #add_to_file("all_words.txt", user_word)
-    search_word = urllib.parse.quote(str(user_word))
-    u = "https://kartaslov.ru/%D1%81%D0%BE%D1%87%D0%B5%D1%82%D0%B0%D0%B5%D0%BC%D0%BE%D1%81%D1%82%D1%8C-%D1%81%D0%BB%D0%BE%D0%B2%D0%B0/"+search_word
-    #print(u)
-    word_map = requests.get(url=u)
-    #print(word_map.text)
-    with io.open("index_map.html", "w", encoding="utf-8") as file:
-        try:
-            file.write(word_map.text)
-        except:
-            file.close()
 
-    with io.open("index_map.html", "r", encoding="utf-8") as file:
-        src = file.read()
 
-    soup_map = BeautifulSoup(src, 'lxml')
-    words = soup_map.find_all("td", class_="v2-contextual-td-left")
-    ans = []
-    for word in words:
-        try:
-            if (fuzz.ratio(word.find("a").text, user_word) > 60):
-                continue
-            #print(word.find("a").text)
-            ans.append(word.find("a").text)
-        except:
-            pass
 
-    print(k, " - ",find_word(trs, k), " - главное слово", " - ", len(ans))
-    if (len(ans) < 20):
-        bad_words.append(find_word(trs, k))
-    # for i in range(len(ans)):
-    #     if (len(ans[i].lower().split()) > 1):
-    #         print(ans[i])
-    #         bad_words.append(ans[i])
-    #print(ans)
-'''
 
-# print(len(bad_words))
-# delete_bad_words()
+
 w = generate_main_word()
 print(get_simular_words(w))
-# print(generate_simular_words(11, w))
